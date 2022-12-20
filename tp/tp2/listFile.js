@@ -25,5 +25,5 @@ function listFile(directory) {
     return fileArray;
 }
 
-const listedFiles = listFile(path.join(__dirname, "./../assets"));
+const listedFiles = listFile(path.join(__dirname, "/../assets"));
 console.log(listedFiles);
