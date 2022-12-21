@@ -5,12 +5,27 @@ class AnimeController {
     constructor(req, res, database) {
         this.req = req
         this.res = res
-        this.db = database
     }
 
+    /* @HitsuiRouting
+    * Route: /anime
+    * Method: GET
+    * Function: index
+    */
     async index() {
         this.res.send({
             hello: 'world'
+        })
+    }
+
+    /* @HitsuiRouting
+    * Route: /anime/test
+    * Method: GET
+    * Function: test
+    */
+    async test() {
+        this.res.send({
+            hello: 'test'
         })
     }
 }

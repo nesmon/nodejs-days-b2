@@ -5,9 +5,13 @@ class IndexController {
     constructor(req, res, database) {
         this.req = req
         this.res = res
-        this.db = database
     }
 
+    /* @HitsuiRouting
+    * Route: /
+    * Method: GET
+    * Function: index
+    */
     async index() {
         this.res.send({
             hello: 'world'
