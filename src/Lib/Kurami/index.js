@@ -37,11 +37,11 @@ class Kurami {
     run(args) {
         const commands = this.getCommandsInfo()
 
-        if (args === "help" || args.length === 0) {
+        if (args[0] === "help" || args.length === 0) {
             this.runHelp()
         }
 
-        if (args.length > 0) {
+        if (args.length > 0 && args[0] !== "help") {
             const command = commands.find(command => command.name === args[0])
 
             if (command) {

@@ -6,9 +6,8 @@ const AnimeSchema = new mongoose.Schema({
     image: String,
     episodes: Number,
     status: String,
-    genres: [String],
     rating: Number,
-    views: Number
+    members: Number
 })
 
 AnimeSchema.method("toJson", function () {
