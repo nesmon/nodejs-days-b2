@@ -1,5 +1,6 @@
 // External Dependancies
 const mongoose = require('mongoose')
+const Anime = require('../Entity/Anime.js')
 
 class IndexController {
     constructor(req, res, database) {
@@ -13,7 +14,8 @@ class IndexController {
     * Function: index
     */
     async index() {
-        return this.res.view('index.ejs', { hello: 'world' })
+        const animes = await Anime.aggregate([{ $sample: { size: 4 } }])
+        return this.res.view('index.ejs', { animes: animes })
     }
 }
 

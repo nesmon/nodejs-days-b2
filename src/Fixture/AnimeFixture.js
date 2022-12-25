@@ -1,5 +1,6 @@
 const Anime = require('../Entity/Anime.js')
-const axios = require('axios')
+const JikanAPI = require('../Services/JikanAPI/index.js')
+const AnimeHelper = require('../Helper/AnimeHelper.js')
 
 class AnimeFixture {
     constructor() {
@@ -7,33 +8,36 @@ class AnimeFixture {
     }
 
     async load() {
-        const anime = await this.getAnimesByPopularity()
-        anime.map(async anime => {
-            const animeExists = await Anime.findOne({name: anime.title})
+        const animesName = [
+            "One piece",
+            "Naruto",
+            "Bleach",
+            "Dragon ball",
+            "Pokemon",
+            "Hunter x hunter",
+            "Fairytale",
+            "A certain magical index",
+            "A certain scientific railgun",
+            "A certain scientific accelerator",
+            "Haruhi suzumiya",
+            "Kuroko no basket",
+            "Nisekoi",
+            "Fruits basket",
+        ]
 
-            if (animeExists !== null) {
-                return console.log(`Anime ${anime.title} already exists`)
-            }
+        let animes = await JikanAPI.getAnimeByPopularity()
 
-            console.log(`Loading ${anime.title}...`)
+        for (let i = 0; i < animesName.length; i++) {
+            console.log(`Searching for ${animesName[i]}`)
+            const animesFromSearch = await JikanAPI.getAnimesBySearch(animesName[i])
+            animes = animes.concat(animesFromSearch)
 
-            const animeEntity = new Anime({
-                name: anime.title,
-                description: anime.synopsis,
-                image: anime.images.jpg.image_url,
-                episodes: anime.episodes,
-                status: anime.status,
-                rating: anime.score,
-                members: anime.members
-            })
+            await new Promise(resolve => setTimeout(resolve, 800));
+        }
 
-            await animeEntity.save()
+        animes.map(async anime => {
+            await AnimeHelper.saveAnime(anime)
         })
-    }
-
-    async getAnimesByPopularity() {
-        const response = await axios.get(`${this.url}/top/anime`)
-        return response.data.data
     }
 }
 

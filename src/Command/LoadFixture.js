@@ -19,7 +19,6 @@ class LoadFixture extends BaseCommand{
 
     async run() {
         this.connectToDatabase()
-
         const animeFixture = new AnimeFixture()
         await animeFixture.load()
     }
