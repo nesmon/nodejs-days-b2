@@ -9,7 +9,8 @@ const path = require('path')
 
 
 const database = mongoose.createConnection(yuhiiConfig.database.url)
-const router = new hitsui(path.join(__dirname, 'src/Controller'), "Controller").generateRoute(fastify)
+
+new hitsui(path.join(__dirname, 'src/Controller'), "Controller").generateRoute(fastify)
 
 fastify.register(require('@fastify/view'), {
     engine: {

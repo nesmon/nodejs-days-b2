@@ -25,9 +25,8 @@ class AnimeController {
     * Function: test
     */
     async test() {
-        const animes = await Anime.find({});
-
-        console.log(animes)
+        // Acces to anime model and get all results
+        return Anime.find();
     }
 }
 
