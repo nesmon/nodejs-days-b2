@@ -13,9 +13,7 @@ class IndexController {
     * Function: index
     */
     async index() {
-        this.res.send({
-            hello: 'world'
-        })
+        return this.res.view('index.ejs', { hello: 'world' })
     }
 }
 

@@ -1,21 +1,22 @@
 // External Dependancies
-const mongoose = require('mongoose')
+const Anime = require('../../Entity/Anime.js')
 
 class AnimeController {
-    constructor(req, res, database) {
+    constructor(req, res) {
         this.req = req
         this.res = res
     }
 
     /* @HitsuiRouting
-    * Route: /anime
+    * Route: /api/animes
     * Method: GET
     * Function: index
     */
     async index() {
-        this.res.send({
-            hello: 'world'
-        })
+        console.log("hello")
+        const animes = await Anime.find();
+
+        console.log(animes)
     }
 
     /* @HitsuiRouting
@@ -24,9 +25,9 @@ class AnimeController {
     * Function: test
     */
     async test() {
-        this.res.send({
-            hello: 'test'
-        })
+        const animes = await Anime.find({});
+
+        console.log(animes)
     }
 }
 

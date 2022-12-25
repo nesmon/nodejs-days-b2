@@ -2,7 +2,7 @@
 Kurami is a command manager similar to the command system of Symfony.
 
 ## Why Kurami ?
-Nice question, andI have absolutly no answer, in reality it's just birth because needted to setup fixture in a project and wanted to have something clean.
+Nice question, and I have absolutly no answer, in reality it's just birth because needted to setup fixture in a project and wanted to have something clean.
 But you will probably find a better utility than me ^^
 
 ## How it works ?
